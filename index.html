@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index_style.css">  
+  <link rel="stylesheet" href="soundplaystyle.css">
+  <link rel="stylesheet" href="clock.css">
+  
+  <title>window1.0</title>
+</head>
+<body> 
+ <div class="screen">    
+ <header> 
+    <button class="closebutton"></button>
+  </header>
+  
+<nav>
+    <ul>
+      <li>File</li>
+      <li>View</li>
+      <li>Special</li>
+    </ul>
+</nav>
+   
+<!--페이지 이름표-->
+<div class="page_name">Control panel</div>
+  
+<!-- 폰트 크기 조절 슬라이더 -->
+<div class="controls">
+    <label for="fontSizeSlider">A:</label>
+    <input type="range" id="fontSizeSlider" min="20" max="100" value="40" />
+</div>
+
+   
+<!--컨텐츠 담는 곳-->
+<div class="grid-container">
+    <div class="grid-item" data-screen="README_Screen">README.TXT</div>
+    <div class="grid-item" data-screen="GAME_Screen">DRAWPAD.EXE</div>
+    <div class="grid-item" data-screen="SCHEDULE_Screen">SCHEDULE.EXE</div>
+    <div class="grid-item" data-screen="MUSIC_Screen">MUSIC.EXE</div>
+    <div class="grid-item" data-screen="INSTAGRAM_Screen">Instagram.EXE</div>
+    <div class="grid-item" data-screen="Clock_Screen">Clock.EXE</div>
+</div>
+
+<!-- 각각스크린 화면들 -->
+ <!--README 콘텐츠-->
+ <div id="README_Screen" class="screen-content" style="display: none;">
+  <header> 
+    <button class="popup_closebutton"></button>
+  </header>
+  <nav>
+    <ul>
+      <li>File</li>
+      <li>View</li>
+      <li>Special</li>
+    </ul>
+  </nav>
+  <div class="page_name">README_TXT</div>
+  
+  <div class="text-image-container">
+    <div class="text-content">
+      <h1>인간과 컴퓨터의 첫 소통</h1>
+      <h2>우측의 커서 이미지를 클릭한 후 확인을 눌러보세요.</h2>
+      <p>
+        클릭은 컴퓨터와 소통하는 방법 중 하나로, WINDOWS 1.0에서 처음 도입되었습니다.<br>
+        사용자들은 더 이상 명령어를 하나하나 입력할 필요 없이<br>
+        커서를 사용해 클릭 한 번으로 원하는 프로그램을 실행할 수 있게 되었습니다.
+      </p>
+    </div>
+    <div class="image-content">
+      <img id="cursorImage" src="pointer_click_me.png" alt="소통의 시작">
+    </div>
+  </div>
+  <Button id="README_Screen_Event_Button"class="Normal_Button">확인</Button>  
+  
+  <div class="alert">
+    <p>당신은 컴퓨터와 인간의 <br> 첫번째 소통을 체험했습니다.</p>
+    <button>신기하다.</button>
+  </div>
+  <footer>  
+  </footer>
+  </div>
+
+ <!--GAME_SCREEN 콘텐츠-->
+ <div id="GAME_Screen" class="screen-content">
+  <header> 
+   <button class="popup_closebutton"></button>
+  </header>
+  <nav>
+   <ul>
+    <li id="resetBtn">Reset</li><!--Reset기능을 추가해 주기 위한 id사용-->
+    <li>Save</li>
+   </ul>
+  </nav>
+  
+  <div class="page_name">GAME_EXE</div>
+  <div class="game_grid_container"></div>
+
+  <footer> </footer>
+   </div>
+  
+  <!--SCHEDULE_SCREEN 콘텐츠-->
+  <div id="SCHEDULE_Screen" class="screen-content">
+    <header> 
+     <button class="popup_closebutton"></button>
+    </header>
+    <nav>
+     <ul>
+      <li id="resetBtn_SCHEDULE_SCREEN">Reset</li>
+      <li>Save</li>
+     </ul>
+    </nav>
+    
+    <div class="schedule-table-container">
+      <table class="schedule-table">
+          <col style="width: 30%">
+          <col style="width: 70%">
+          <tr>
+            <th>Time</th>
+            <th>Activity</th>
+          </tr>
+        <tbody>
+          <tr><td>12:00 AM</td><td><div class="editable" contenteditable="true"></div></td></tr>
+          <tr><td>2:00 AM</td><td><div class="editable" contenteditable="true"></div></td></tr>
+          <tr><td>4:00 AM</td><td><div class="editable" contenteditable="true"></div></td></tr>
+          <tr><td>6:00 AM</td><td><div class="editable" contenteditable="true"></div></td></tr>
+          <tr><td>8:00 AM</td><td><div class="editable" contenteditable="true"></div></td></tr>
+          <tr><td>10:00 AM</td><td><div class="editable" contenteditable="true"></div></td></tr>
+          <tr><td>12:00 PM</td><td><div class="editable" contenteditable="true"></div></td></tr>
+          <tr><td>2:00 PM</td><td><div class="editable" contenteditable="true"></div></td></tr>
+          <tr><td>4:00 PM</td><td><div class="editable" contenteditable="true"></div></td></tr>
+          <tr><td>6:00 PM</td><td><div class="editable" contenteditable="true"></div></td></tr>
+          <tr><td>8:00 PM</td><td><div class="editable" contenteditable="true"></div></td></tr>
+          <tr><td>10:00 PM</td><td><div class="editable" contenteditable="true"></div></td></tr>
+        </tbody>
+      </table>
+    
+     </div>
+     <footer></footer>
+    </div>
+  
+  <!--MUSIC_SCREEN 콘텐츠-->
+  <div id="MUSIC_Screen" class="screen-content">
+    <header> 
+      <button class="popup_closebutton"></button>
+    </header>
+    <nav>
+      <ul>
+        <li>File</li>
+        <li>Save</li>
+        <li>Music</li>
+      </ul>
+    </nav>
+    <div class="music-player">
+      <audio controls>
+        <source src="audio2.mp3" type="audio/mpeg">
+      </audio>
+  
+      <div class="progress-container">
+        <input type="range" id="progress-bar" value="0" max="100" step="1">
+      </div>
+  
+      <div class="audio-controls"> <!-- 'controls'에서 'audio-controls'로 변경 -->
+        <button id="prev"></button>
+        <button id="play-pause"></button>
+        <button id="next"></button>
+  
+        <!-- 소리 조절-->
+        <div class="volume-control">
+          <input type="range" id="volume" value="50" max="100" step="1">
+        </div>
+      </div>
+    </div>
+
+    <footer></footer>
+  </div>
+  
+  <!--Clock_Screen 콘텐츠-->
+  <div id="Clock_Screen" class="screen-content">
+   <header> 
+      <button class="popup_closebutton"></button>
+   </header>
+    <nav>
+      <ul>
+        <li>File</li>
+        <li>View</li>
+      </ul>
+    </nav>
+    <div class="page_name">CLOCK_EXE</div>
+    <div id="clock"></div>
+    <footer> </footer>
+  </div>
+
+<script type="text/javascript" src="index_js.js"></script>
+<script src="soundplayer.js"></script>
+
+      
+    
+ <footer> </footer>
+ </div>
+</body>
+</html>

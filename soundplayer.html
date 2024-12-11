@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>음악 플레이어</title>
+  <link rel="stylesheet" href="soundplaystyle.css">
+</head>
+<body>
+  <div class="music-player">
+    <audio controls>
+      <source src="audio2.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="progress-container">
+      <input type="range" id="progress-bar" value="0" max="100" step="1">
+    </div>
+
+    <div class="audio-controls"> <!-- 'controls'에서 'audio-controls'로 변경 -->
+      <button id="prev"></button>
+      <button id="play-pause"></button>
+      <button id="next"></button>
+
+      <!-- 소리 조절-->
+      <div class="volume-control">
+        <input type="range" id="volume" value="50" max="100" step="1">
+      </div>
+    </div>
+  </div>
+  <script src="soundplayer.js"></script>
+</body>
+</html>

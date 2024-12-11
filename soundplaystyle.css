@@ -1,0 +1,102 @@
+.music-player {
+  background: #fff;
+  border: 3px solid black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;  /* 기본적으로 세로 정렬 */
+  align-items: center;     /* 가운데 정렬 */
+  width: 500px;            /* 플레이어 너비 지정 */
+  box-shadow: 
+    0 0 0 1px #000000, /* 첫 번째 도트 */
+    2px 2px 0 2px #000000, /* 두 번째 도트 */
+    4px 4px 0 5px #000000, /* 세 번째 도트 */
+    6px 6px 0 5px #000000; /* 네 번째 도트 */
+  
+  position: absolute; /* 절대 위치 지정 */
+  top: 50%;           /* 화면의 세로 중간 위치 */
+  left: 50%;          /* 화면의 가로 중간 위치 */
+  transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
+}
+
+audio {
+  width: 100%;
+  display: none; /* 기본 오디오 컨트롤을 숨김 */
+}
+
+.audio-controls { /* .controls에서 .audio-controls로 변경 */
+  display: flex;
+  justify-content: left; /* 버튼들이 중앙에 배치되도록 */
+  align-items: center;     /* 버튼들이 세로로 가운데 정렬 */
+  gap: 10px;               /* 버튼 간 간격 */
+  width: 100%;             /* 컨트롤 버튼이 부모 영역을 꽉 채우도록 설정 */
+}
+
+.audio-controls button { /* .controls button에서 .audio-controls button으로 변경 */
+  width: 40px; /* 버튼 크기 */
+  height: 40px; /* 버튼 크기 */
+  background-size: cover; /* 이미지가 버튼 크기에 맞게 조정되도록 */
+  background-position: center; /* 이미지가 버튼 중앙에 위치하도록 */
+  border: none;
+  cursor: pointer;
+}
+
+.audio-controls button:active { /* .controls button:active에서 .audio-controls button:active로 변경 */
+  filter: invert(1); /* 색 반전 효과 */
+}
+
+#prev {
+  background-image: url('audioplayer-down-but.png'); /* 이전 버튼 이미지 */
+}
+
+#play-pause {
+  background-image: url('audioplayer-play-but.png'); /* 재생/일시정지 버튼 이미지 */
+}
+
+#next {
+  background-image: url('audioplayer-up-but.png'); /* 다음 버튼 이미지 */
+}
+
+.progress-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* progress bar를 가운데 정렬 */
+  align-items: center;
+  margin-top: 10px;
+}
+
+#progress-bar {
+  width: 100%;
+  height: 40px;
+  background-color: #ffffff;
+  border: 2px solid black;
+  appearance: none;
+}
+
+#progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 40px;
+  width: 40px;
+  border: 2px solid black;
+  background: 
+    radial-gradient(circle, black 20%, transparent 10%) repeat, /* 도트 패턴 */
+    #FF6E6E; /* 기본 배경색 */
+  background-size: 10px 10px, cover; 
+}
+
+#volume {
+  width: 210px;  /* 음량 슬라이더의 너비 */
+  height: 42px;
+  border-radius: 5px;
+  appearance: none;
+  background-image: url('audioplayer-soundadjust.png'); /* 배경 이미지 추가 */
+  background-size: cover; /* 배경 이미지를 슬라이더 크기에 맞게 조정 */
+  background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+}
+
+/* 음량 슬라이더 썸네일(슬라이딩 버튼) 이미지 */
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  background-color: #000000;
+}

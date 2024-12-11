@@ -1,0 +1,482 @@
+/* 모든 컨텐츠는 왼쪽에서 20px떨어질것. */
+
+/*폰트 적용*/
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*body로가면 커서가 사라지게 하는 css*/
+.hidden-cursor {
+  pointer-events: none; /* 화면을 벗어나면 마우스 이벤트를 비활성화 */
+  cursor: none; /* 커서를 숨깁니다. */
+}
+  
+
+/*1.전체적인 틀(기본 마진값을 없앰)*/
+body {
+  font-family: 'DungGeunMo';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  background-size: cover;
+  z-index: -1;
+  position: relative;
+}
+
+.screen {
+  cursor: auto;
+  width: 880px;
+  height: 620px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  /* 정확히 중앙에 배치 */
+  z-index: 1;
+}
+
+
+/* 1-1.기본 헤더*(모든 컨텐츠에 적용된다.)*/
+header {
+  width: 100%; /* 화면 너비 100% */
+  height: 40px; /* 화면 높이 100% */
+  background-color: #5658fb;
+  background-image: radial-gradient(circle, black 1px, transparent 1px);
+  background-size: 10px 10px; /* 도트 */
+  border-bottom: 2px solid black;
+}
+ /*헤더 안 뒤로가기 버튼*/
+ .closebutton {
+  position: absolute;
+  top: 5px; 
+  left: 5px; /* rect1의 왼쪽 끝에서 5px 떨어진 위치 */
+  width: 30px; /* 버튼의 가로 크기 (필요에 맞게 조정) */
+  height: 30px; /* rect1의 세로 크기와 동일하게 설정 */
+  background-image: url('buttonclose.png'); /* 이미지 버튼의 URL */
+  background-size: cover; /* 이미지 크기 맞추기 */
+  border: none; /* 버튼의 기본 테두리 제거 */
+  cursor: auto; ; /* 버튼이 클릭 가능하게 표시 */
+ }
+
+/* 1-2.네비 */
+nav {
+  background-color: #fdfd57;
+  width: 100%; /* body의 너비 100% */
+  height: 40px; /* 고정 높이 */
+  border-bottom: 2px solid black;
+  position: absolute; /* body를 기준으로 위치 지정 */
+  left: 0; /* body 왼쪽에 고정 */
+  box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+
+ /*네비 리스트들을 담고있는 컨텐츠 박스)*/
+ nav ul {
+  margin: 0; /* 기본적으로 ul의 마진 제거 */
+  padding: 0; /* 기본적으로 ul의 패딩 제거 */
+  list-style-type: none; /* 기본 네비스타일을 지우고 가로로 배열해주는 코드 */
+ }
+ /*네비 안 각각의 리스트들*/
+ nav li {
+  display: inline-block;/*인라인이고, 마진값을 추가해주는 코드*/
+  font-size: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+ }
+ 
+/*1-3. 무슨 페이지인지 설명하는 이름표*/
+.page_name {
+  position: absolute;
+  top: 0; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  background-color: black;
+  color: white; 
+  font-size: 30px; 
+  padding: 5px 10px; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 30px; 
+  font-family: 'DungGeunMo';
+  z-index: 0;
+}
+
+/*1-4.글씨 크기조절 컨텐츠 박스*/
+.controls {
+  position: absolute; /* body를 기준으로 위치 지정 */
+  top: 100px; /* body의 상단에서 20px */
+  left: 20px; /* body의 왼쪽에서 20px */
+  width: 150px;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+  color: white;
+  gap: 20px;
+}
+ /*폰트 슬라이더 손잡이*/
+ #fontSizeSlider {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 10px; /* 슬라이더 트랙 높이 */
+  background: white;
+  outline: none;
+  cursor: pointer;
+ }
+ 
+ #fontSizeSlider::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 8px;
+  background: transparent;
+ }
+
+ #fontSizeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background:white;
+  cursor: url('pointer.png') ,auto;
+ }
+
+/*1-5.컨텐츠들 담는 전체적인 칸*/
+.grid-container {
+  margin-top: 100px;
+  margin-left: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, auto); /* 두 개의 컬럼으로 자동 크기 설정 */
+  grid-template-rows: repeat(6, auto); /* 6개의 항목을 세로로 자동 크기 설정 */
+  gap: 10px; /* 항목 간 간격 설정 */
+  width: 80px; /* 콘텐츠에 맞춰 너비 자동 설정 */
+}
+ /*각각의 그리드 아이템*/
+ .grid-item {
+  font-size: 40px;
+  display: inline-block; /* 항목이 콘텐츠 크기에 맞게 확장 */
+  padding: 10px; /* 여백 추가 (선택 사항) */
+ }
+
+ /*컨텐츠를 클릭시 검은색으로 바뀜*/
+ .grid-item.oneclick {
+  display: inline-block;
+  background-color: black;
+  color: white;
+}
+
+/*1-6.공통적인 버튼디자인*/
+.Normal_Button{
+  color: black; /* 글자 색상 */
+  background-color: white; /* 버튼 배경색 */
+  border: 2px solid black; /* 테두리 설정 */
+  border-radius: 50px; 
+  font:inherit;
+  font-size: 30px; /* 글씨 크기 */
+  padding: 10px 20px; /* 버튼 내부 여백 */
+  margin-left:20px;
+}
+
+/*1-7.공통적인 알림창 틀*/
+.alert {
+  display: none; /* 기본적으로 알림창은 숨겨짐 */
+  position: fixed; /* 화면 고정 */
+  top: 50%; /* 화면 가운데 */
+  left: 50%;
+  transform: translate(-50%, -50%); /* 중앙 정렬 */
+  width: 747px; /* 알림창 너비 */
+  height: 308px; /* 알림창 높이 (이미지 크기에 맞게 조정) */
+  background-image: url('alert.png'); /* 배경 이미지 */
+  background-size: cover; /* 배경 이미지 크기 맞추기 */
+  background-position: center; /* 배경 이미지 중앙 정렬 */
+  border: none; /* 테두리 제거 */
+  z-index: 1000; /* 다른 요소 위에 표시 */
+}
+ /*알림창 텍스트 형식*/
+ .alert p {
+  font-size: 28px;
+  padding-top: 100px;
+  padding-left: 180px;
+  text-align: left; /* 중앙 정렬 */
+}
+
+/* 알림창 닫기 버튼 */
+.alert button {
+  width: 145px;
+  height: 60px;
+  background-image: url('alert_button.png');
+  background-size: cover;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-family: 'DungGeunMo';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+  font-size: 16px;
+  display: block;
+  margin: 0 auto; /* 버튼을 수평으로 중앙 정렬 */
+  padding: 5px 20px; /* 상하 여백 5px, 좌우 여백 20px */
+}
+
+/*1-8.스크린을 닫는 버튼*/
+.popup_closebutton {
+  position: absolute;
+  top: 5px; 
+  left: 5px; /* rect1의 왼쪽 끝에서 5px 떨어진 위치 */
+  width: 30px; /* 버튼의 가로 크기 (필요에 맞게 조정) */
+  height: 30px; /* rect1의 세로 크기와 동일하게 설정 */
+  background-image: url('buttonclose.png'); /* 이미지 버튼의 URL */
+  background-size: cover; /* 이미지 크기 맞추기 */
+  border: none; /* 버튼의 기본 테두리 제거 */
+  cursor: auto; ; /* 버튼이 클릭 가능하게 표시 */
+ }
+
+ /*2.스크린*/
+/*스크린 공통 css코드*/
+.screen-content {
+  display: none; /* 기본적으로 팝업은 숨김 */
+  width: 880x; /* body와 동일한 너비 */
+  height: 620px; /* body와 동일한 높이 */
+  background-color: rgb(255, 255, 255); /* 배경을 하얀색으로 */
+  position: absolute; /* body 안에서 위치 고정 */
+  top: 0; /* body의 상단에 고정 */
+  left: 0; /* body의 왼쪽에 고정 */
+  margin: 0 auto; /* 가로 중앙 정렬 */
+  z-index: 2; /* 다른 요소 위에 표시 */
+  box-sizing: border-box; /* 테두리 포함 크기 계산 */
+}
+ 
+ /*2-1.readme screen*/
+ #README_Screen {
+  background-color: #f9f9f9; 
+ }
+  
+  /*readme의 컨텐츠 박스 정렬*/
+   .text-image-container {
+   display: flex; /* Flexbox로 배치 */
+   flex-direction: row; /* 가로 방향 배치 */
+   gap: 200px; /* 텍스트와 이미지 간의 간격 */
+   margin-top: 100px;
+   }
+
+    .text-content {
+     max-width: 60%; /* 텍스트 영역 너비 제한 */
+     text-align: left; /* 텍스트를 왼쪽 정렬 */
+     margin-left: 20px; /* 기본 여백 제거 */
+     padding: 10px 0; /* 각 요소 사이에 적절한 여백 추가 */
+     }
+     .text-content h1{
+      font-size: 30px;
+      font-weight: normal; 
+      } 
+     .text-content h2{
+     font-size: 20px;
+     font-weight: normal; 
+      }
+     .text-content p {
+    font-size: 20px;
+      }
+
+    .image-content img {
+     max-width: 50%; /* 이미지 크기 제한 */
+     height: auto; /* 이미지 비율 유지 */
+     }
+  
+     /* 이미지 둥둥 떠다니는 애니메이션 */ 
+     @keyframes floating {
+      0% {
+        transform: translateY(0); /* 처음 위치 */
+      }
+      50% {
+        transform: translateY(-40px); /* 위로 10px 이동 */
+      }
+      100% {
+        transform: translateY(0); /* 원래 위치로 돌아옴 */
+      }
+    }
+    
+    img {
+      animation: floating 2s ease-in-out infinite; /* 2초마다 반복 */
+    }
+
+ /*2-2.Game screen*/
+ #GAME_Screen {
+  background-color: #52ff52;
+  display: none;
+  width: 880px;
+  height: 620px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  z-index: 2;
+  box-sizing: border-box;
+ }
+  /*게임 그리드 컨테이너*/
+  .game_grid_container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8개의 열 */
+    grid-template-rows: repeat(8, 1fr);    /* 8개의 행 */
+    width: 200px; /* 격자의 전체 너비 */
+    height: 200px; /* 격자의 전체 높이 */
+    box-shadow: 
+      0 0 0 1px #000000, /* 첫 번째 도트 */
+      2px 2px 0 2px #000000, /* 두 번째 도트 */
+      4px 4px 0 5px #000000, /* 세 번째 도트 */
+      6px 6px 0 5px #000000; /* 네 번째 도트 */
+    cursor: url('touch_pointer.png'), auto; 
+    position: absolute;
+    top: 50%;  /* #GAME_Screen의 중앙 */
+    left: 50%; /* #GAME_Screen의 중앙 */
+    transform: translate(-50%, -50%); /* 중앙에 정확히 위치 */
+  }
+
+ .game_grid_container div {
+  width: 100%;    /* 셀의 너비를 그리드에 맞춤 */
+  height: 100%;   /* 셀의 높이를 그리드에 맞춤 */
+  background-color: #545454;
+  border: 2px dotted black;
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  width: 24px; /* 원의 고유 크기 */
+  height: 24px; /* 원의 고유 크기 */
+  background-image: url('circle.png');  /* 배경 이미지 */
+  background-size: auto; /* 이미지 크기를 원본 크기로 설정 */
+  background-position: center; /* 이미지 위치를 중앙으로 설정 */
+  background-repeat: no-repeat;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* div의 중앙에 정확히 위치 */
+}
+ 
+/*3.CALANDAR_screen*/
+#SCHEDULE_Screen {
+background-color: #61b2f6;
+display: none;
+width: 880px;
+height: 625px;
+position: absolute;
+top: 0;
+left: 0;
+margin: 0 auto;
+z-index: 2;
+box-sizing: border-box;
+}
+
+ /*스케줄 테이블 컨테이너*/
+ .schedule-table-container {
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  overflow-y: scroll;
+  border: 2px solid black;
+  background-color: white;
+  box-shadow: 
+    0 0 0 1px #000000, /* 첫 번째 도트 */
+    2px 2px 0 2px #000000, /* 두 번째 도트 */
+    4px 4px 0 5px #000000, /* 세 번째 도트 */
+    6px 6px 0 5px #000000; /* 네 번째 도트 */
+  cursor: url('textcursor.png'), auto;
+
+  /* 중앙 정렬 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 요소의 크기만큼 이동하여 중앙 정렬 */
+}
+
+ .schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+ .schedule-table th {
+  background-color: white;
+  color: black;
+  text-align:left;
+  padding: 8px;
+  border-bottom:2px solid black;
+}
+
+ .schedule-table th:first-child { border-right: 2px solid black; }
+
+ .schedule-table td {
+  text-align: left;
+  padding: 8px;
+  background-color: white;
+ }
+s
+ .schedule-table tbody tr:first-child td { border-top: 2px solid black; }
+  
+ /*수정할 수 있는 텍스트 박스*/
+ .editable {
+  min-height: 20px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-align: left;
+ }
+
+ .schedule-table-container::-webkit-scrollbar {
+  width: 20px;
+ }
+ .schedule-table-container::-webkit-scrollbar-track { background: white;
+  border: 2px solid black;}
+  .schedule-table-container::-webkit-scrollbar-thumb {
+      background: 
+        radial-gradient(circle, black 20%, transparent 10%) repeat, /* 도트 패턴 */
+        #FF6E6E; /* 기본 배경색 */
+      background-size: 10px 10px, cover; /* 도트 크기와 기본 배경 크기 조정 */
+      border: 2px solid black; /* 검은색 테두리 추가 */
+      
+  }
+    
+/*음악플레이어스크린*/
+#MUSIC_Screen {
+    display: none;
+    width: 880px;
+    height: 625px;
+    background-color: #61b2f6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    z-index: 1;
+    box-sizing: border-box;
+  }
+
+/*clock스크린*/
+
+#Clock_Screen {
+  display: none;
+  width: 300px;
+  height: 380px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  z-index: 1;
+  box-sizing: border-box;
+  border: 2PX solid black;
+  margin-left:580px ;
+}
+  
+
+/*푸터*/
+footer {
+  position: absolute; /* body를 기준으로 위치 지정 */
+  bottom: 0; /* body의 하단에 고정 */
+  left: 0;
+  width: 100%; /* body의 너비에 맞춤 */
+  height: 80px; /* 고정 높이 */
+  background-color: #52ff7d;
+  border-top: 2px solid black;
+}
+

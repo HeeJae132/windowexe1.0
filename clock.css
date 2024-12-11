@@ -1,0 +1,11 @@
+#clock{
+  width: 160px; /* 시계의 너비 */
+  height: 128px; /* 시계의 높이 */
+  background-image: url('clock.png'); /* 시계 배경 이미지 */
+  background-size: cover; /* 이미지가 요소를 완전히 덮도록 크기 조절 */
+  background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+  background-position: center; /* 이미지를 중앙에 위치 */
+  margin-left:75px ;
+  margin-right: 75px;
+  margin-top:80px;
+}
